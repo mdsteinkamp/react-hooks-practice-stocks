@@ -16,6 +16,11 @@ function MainContainer() {
   function handleAddStock(stock) {
     setPortfolioStocks([...portfolioStocks, stock])
   }
+
+  function handleDeleteStock(deletedStock) {
+    const updatedPortfolioStocks = portfolioStocks.filter(stock => stock.id !== deletedStock.id)
+    setPortfolioStocks(updatedPortfolioStocks)
+  }
   
 
   return (
@@ -23,10 +28,10 @@ function MainContainer() {
       <SearchBar />
       <div className="row">
         <div className="col-8">
-          <StockContainer stocks={stocks} onAddStock={handleAddStock} />
+          <StockContainer stocks={stocks} onAddStock={handleAddStock}  />
         </div>
         <div className="col-4">
-          <PortfolioContainer portfolioStocks={portfolioStocks}/>
+          <PortfolioContainer portfolioStocks={portfolioStocks} onDeleteStock={handleDeleteStock} />
         </div>
       </div>
     </div>

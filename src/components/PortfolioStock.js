@@ -1,9 +1,13 @@
 import React from "react";
 
-function PortfolioStock({ stock }) {
+function PortfolioStock({ stock, onDeleteStock }) {
+
+  function handleDeleteStock() {
+    onDeleteStock(stock)
+  }
 
   return (
-    <div >
+    <div onClick={handleDeleteStock}>
       <div className="card">
         <div className="card-body">
           <h5 className="card-title">{stock.name}</h5>
