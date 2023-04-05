@@ -1,13 +1,9 @@
 import React from "react";
 
-function Stock({ stock, onAddStock }) {
-
-  function handleAddStock() {
-    onAddStock(stock)
-  }
+function PortfolioStock({ stock }) {
 
   return (
-    <div onClick={handleAddStock}>
+    <div >
       <div className="card">
         <div className="card-body">
           <h5 className="card-title">{stock.name}</h5>
@@ -17,4 +13,4 @@ function Stock({ stock, onAddStock }) {
     </div>
   );
 }
-export default Stock;
+export default PortfolioStock;
