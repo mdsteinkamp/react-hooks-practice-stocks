@@ -1,9 +1,13 @@
 import React from "react";
 
-function SearchBar({ onSort }) {
+function SearchBar({ onSort, onSearchFilterChange }) {
 
   function handleSort(e) {
     onSort(e)
+  }
+
+  function handleSearchFilter(e) {
+    onSearchFilterChange(e)
   }
 
   return (
@@ -32,7 +36,7 @@ function SearchBar({ onSort }) {
       <br />
       <label>
         <strong>Filter:</strong>
-        <select onChange={null}>
+        <select onChange={handleSearchFilter}>
           <option value="Tech">Tech</option>
           <option value="Sportswear">Sportswear</option>
           <option value="Finance">Finance</option>

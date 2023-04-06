@@ -6,8 +6,8 @@ import SearchBar from "./SearchBar";
 function MainContainer() {
   const [stocks, setStocks] = useState([])
   const [portfolioStocks, setPortfolioStocks] = useState([])
-  // const [alphaChecked, setAlphaChecked] = useState(false)
-  // const [priceChecked, setPriceChecked] = useState(false)
+  const [filter, setFilter] = useState(null)
+
 
 
   useEffect(() => {
@@ -49,14 +49,20 @@ function MainContainer() {
     }
   
   }
+
+  function handleSearchFilter(e) {
+    setFilter(e.target.value)
+  }
+
+  const shownStocks = filter !== null ? stocks.filter(stock => stock.type === filter) : stocks
   
 
   return (
     <div>
-      <SearchBar onSort={handleSort}/>
+      <SearchBar onSort={handleSort} onSearchFilterChange={handleSearchFilter}/>
       <div className="row">
         <div className="col-8">
-          <StockContainer stocks={stocks} onAddStock={handleAddStock}  />
+          <StockContainer stocks={shownStocks} onAddStock={handleAddStock}  />
         </div>
         <div className="col-4">
           <PortfolioContainer portfolioStocks={portfolioStocks} onDeleteStock={handleDeleteStock} />
@@ -67,3 +73,9 @@ function MainContainer() {
 }
 
 export default MainContainer;
+
+// function handleSearchFilter(e) {
+//   const filter = e.target.value
+//   const filteredStocks = [...stocks].filter(stock => stock.type === filter)
+//   setStocks(filteredStocks)
+// }
